@@ -9,7 +9,9 @@ const uuidv4 = require('uuid/v4');
 
 const app = express();
 const MONGODB_URL = process.env.MONGODB_URI;
+
 const feedRoutes = require('./routes/feed');
+const authRoutes = require('./routes/auth');
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -45,6 +47,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/feed', feedRoutes);
+app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
