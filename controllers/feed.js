@@ -34,6 +34,8 @@ exports.getPosts = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
+  console.log(req.userId);
+
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -108,6 +110,8 @@ exports.getPost = (req, res, next) => {
 };
 
 exports.updatePost = (req, res, next) => {
+  console.log(req.userId);
+
   const postId = req.params.postId;
   const errors = validationResult(req);
 
