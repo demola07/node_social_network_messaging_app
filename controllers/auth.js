@@ -86,8 +86,6 @@ exports.getStatus = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-      console.log(user);
-
       res.status(200).json({
         message: 'Status fetched',
         status: user.status,
