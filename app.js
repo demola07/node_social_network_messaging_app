@@ -6,12 +6,12 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const multer = require('multer');
 const uuidv4 = require('uuid/v4');
+const graphlHttp = require('express-graphql');
+const graphqlSchema = require('./graphql/schema');
+const graphqlResolver = require('./graphql/resolvers');
 
 const app = express();
 const MONGODB_URL = process.env.MONGODB_URI;
-
-const feedRoutes = require('./routes/feed');
-const authRoutes = require('./routes/auth');
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -46,8 +46,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/feed', feedRoutes);
-app.use('/auth', authRoutes);
+app.use(
+  '/graphql',
+  graphlHttp({
+    schema: graphqlSchema,
+    rootValue: graphqlResolver,
+  })
+);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -63,12 +68,8 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGODB_URL)
   .then((result) => {
-    const server = app.listen(8080, () => {
+    app.listen(8080, () => {
       console.log('Server Running');
-    });
-    const io = require('./socket').init(server);
-    io.on('connection', (socket) => {
-      console.log('Client connected');
     });
   })
   .catch((err) => {
