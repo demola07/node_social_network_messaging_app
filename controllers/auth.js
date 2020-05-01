@@ -8,7 +8,7 @@ exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('Validation failed!!!');
+    const error = new Error('Validation failed!!');
     error.statusCode = 422;
     error.data = errors.array();
     throw error;
@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
     const user = await User.findOne({ email: email });
 
     if (!user) {
-      const error = new Error('User could not be found');
+      const error = new Error('User could not be found!!!');
       error.statusCode = 401;
       throw error;
     }
@@ -100,7 +100,7 @@ exports.getStatus = async (req, res, next) => {
 exports.updateStatus = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('Validation failed!!!');
+    const error = new Error('Validation failed!!');
     error.statusCode = 422;
     error.data = errors.array();
     throw error;
