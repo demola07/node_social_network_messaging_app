@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - 10.16.3
-services: mongodb
 install:
   - npm install
+services: mongodb
 script:
   - npm run test
 branches:
