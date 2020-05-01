@@ -8,7 +8,7 @@ const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 
 const app = express();
-const MONGODB_URL = MONGODB_URI;
+// const MONGODB_URL = MONGODB_URI;
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -55,7 +55,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGODB_URL)
+  .connect(process.env.MONGODB_URL)
   .then((result) => {
     app.listen(8080, () => {
       console.log('Server Running');

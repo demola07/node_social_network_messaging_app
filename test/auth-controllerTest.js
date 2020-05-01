@@ -9,7 +9,7 @@ const AuthController = require('../controllers/auth');
 describe('Auth Controller', function () {
   before(function (done) {
     mongoose
-      .connect(MONGODB_URI_TEST)
+      .connect(process.env.MONGODB_URI_TEST)
       .then((result) => {
         const user = new User({
           email: 'test@test.com',
