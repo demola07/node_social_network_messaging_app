@@ -5,7 +5,7 @@ install:
   - npm install
 services: mongodb
 script:
-  - MONGODB_URI = mongodb+srv://demola:demola@cluster0-yxizt.mongodb.net/messages?retryWrites=true&w=majority MONGODB_URI_TEST = mongodb+srv://demola:demola@cluster0-yxizt.mongodb.net/test-messages?retryWrites=true&w=majority  npm run test
+  - npm run test
 branches:
   only:
     - master
