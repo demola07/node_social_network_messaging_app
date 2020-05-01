@@ -7,7 +7,7 @@ const User = require('../models/user');
 const AuthController = require('../controllers/auth');
 
 describe('Auth Controller', function () {
-  console.log('mongodb ', process.env.TRAVIS_BUILD_ID, process.env.MONGODB_URI_TEST);
+  console.log('mongodb ', process.env.TRAVIS_BUILD_ID, MONGODB_URI_TEST);
 
   before(function (done) {
     mongoose
