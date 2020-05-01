@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const io = require('../socket');
 
 const { validationResult } = require('express-validator');
 const Post = require('../models/post');
