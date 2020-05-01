@@ -8,7 +8,7 @@ const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 
 const app = express();
-const MONGODB_URL = process.env.MONGODB_URI;
+const MONGODB_URL = MONGODB_URI;
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
