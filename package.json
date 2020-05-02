@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --timeout 50000",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "author": "ademola sobaki",
   "license": "MIT",
@@ -28,6 +29,8 @@
     "validator": "^13.0.0"
   },
   "devDependencies": {
+    "coveralls": "^3.1.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^2.0.3",
     "sinon": "^9.0.2"
   }
