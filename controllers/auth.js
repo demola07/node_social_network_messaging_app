@@ -30,6 +30,7 @@ exports.signup = async (req, res, next) => {
       message: 'User Created',
       userId: result._id,
     });
+    return;
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
