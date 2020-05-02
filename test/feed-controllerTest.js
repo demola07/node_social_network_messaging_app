@@ -9,7 +9,7 @@ const FeedController = require('../controllers/feed');
 describe('Feed Controller', function () {
   before(function (done) {
     mongoose
-      .connect(process.env.MONGODB_URI_TEST)
+      .connect(process.env.MONGODB_URI_TEST, { useNewUrlParser: true, useUnifiedTopology: true })
       .then((result) => {
         const user = new User({
           email: 'test@test.com',
