@@ -1,14 +1,13 @@
 const path = require('path');
-
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-require('dotenv').config();
 const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 
 const app = express();
-const MONGODB_URL = process.env.MONGODB_URI;
+// const MONGODB_URL = process.env.MONGODB_URI;
 
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
@@ -61,8 +60,9 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGODB_URL)
+  .connect(process.env.MONGODB_URL)
   .then((result) => {
+    console.log('MongoDB Connected')
     app.listen(8080, () => {
       console.log('Server Running');
     });
