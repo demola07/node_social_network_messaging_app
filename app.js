@@ -7,7 +7,6 @@ const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 
 const app = express();
-// const MONGODB_URL = process.env.MONGODB_URI;
 
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
