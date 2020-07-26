@@ -58,12 +58,14 @@ app.use((error, req, res, next) => {
   });
 });
 
+const PORT = process.env.PORT || 8080
+
 mongoose
   .connect(process.env.MONGODB_URL)
   .then((result) => {
     console.log('MongoDB Connected')
-    app.listen(8080, () => {
-      console.log('Server Running');
+    app.listen(PORT, () => {
+      console.log(`Server running on PORT: ${PORT}`);
     });
   })
   .catch((err) => {
